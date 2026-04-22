@@ -1,0 +1,597 @@
+/* Um CSS básico apenas para deixar o formulário centralizado e apresentável */
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; display: flex; justify-content: flex-start; height: 100vh; margin: 0; }
+        .login-container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
+        h2 { text-align: center; color: #333; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; color: #666; }
+        input[type="email"], input[type="password"] { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background-color: #0056b3; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        button:hover { background-color: #004494; }
+        .erro { color: red; text-align: center; margin-bottom: 15px; }
+
+/* Reset básico de CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- CABEÇALHO SUPERIOR --- */
+        .top-header {
+            display: flex;
+            box-sizing: border-box;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            height: 80px;
+            background-color: #ffffff;
+            border-bottom: 1px solid #eaeaea;
+            width: 100%; /* Garante que ele ocupe a tela toda */
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .page {
+            display: flex;
+            margin-top: 80px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            width: 50px; /* Ajuste o tamanho da sua logo aqui */
+            height: auto;
+        }
+
+        .logo-text h1 {
+            font-size: 20px;
+            color: #1c4a8a;
+            font-weight: 600;
+        }
+
+        .logo-text p {
+            font-size: 12px;
+            color: #666;
+            font-style: italic;
+        }
+
+        .header-texto-img {
+            height: 70px; /* Aumente ou diminua esse valor para ajustar o tamanho do texto */
+            width: auto;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .profile-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #ccc; /* Cor de fundo enquanto não tem imagem */
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: #1c4a8a;
+        }
+
+        .notification-badge {
+            background-color: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: -5px;
+            position: relative;
+            top: -10px;
+        }
+
+        /* --- CONTAINER PRINCIPAL (MENU + CONTEÚDO) --- */
+        .main-container {
+            display: block;
+            width: 100%;
+            background-color: white;
+            
+        }
+
+        /* --- MENU LATERAL (SIDEBAR) --- */
+        .sidebar {
+            width: 250px;
+            background-color: #f0f4fb;
+            padding-top: 20px;
+            display: flex;
+            flex-direction: column;
+
+            /* Mágica para fixar na esquerda: */
+            position: fixed;
+            top: 80px; /* Começa exatamente onde o cabeçalho termina (supondo que ele tem 80px) */
+            left: 0;
+            height: calc(100vh - 80px); /* Pega 100% da altura da tela (100vh) MENOS os 80px do cabeçalho */
+            z-index: 100; /* Garante que fique por cima do conteúdo */
+            
+            /* Se no futuro tiverem muitos links, o menu ganha sua própria barra de rolagem: */
+            overflow-y: auto;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .sidebar li a {
+            display: flex;
+            align-items: center;
+            padding: 15px 30px;
+            color: #1c4a8a;
+            text-decoration: none;
+            font-weight: 500;
+            gap: 15px;
+            border-left: 5px solid transparent;
+            transition: 0.3s;
+        }
+
+        .sidebar li a:hover {
+            background-color: #e2e8f0;
+        }
+
+        .sidebar li.active a {
+            background-color: #ffffff;
+            border-left-color: #1c4a8a;
+            font-weight: 600;
+            border-radius: 0 20px 20px 0;
+            margin-right: 20px;
+        }
+
+        .sidebar li.logout {
+            margin-top: auto;
+            margin-bottom: 20px;
+        }
+
+        /* --- ÁREA DE CONTEÚDO --- */
+        .content-area {
+            padding: 20px 40px;
+            background-color: #ffffff;
+            margin-left: 110px;
+            margin-top: 30px;
+        }
+
+        .greeting h2 {
+            font-size: 28px;
+            color: #1c4a8a;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .greeting p {
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        /* --- CARDS --- */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            border-radius: 15px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card-img-placeholder {
+            width: 120px;
+            height: 100px;
+            margin-bottom: 20px;
+            object-fit: contain;
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 30px;
+            width: 100%;
+            flex-grow: 1;
+        }
+
+        .card ul li {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #444;
+        }
+
+        .card button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        /* Cores Específicas de cada Card admin */
+        .card-blue { background-color: #f0f4fb; }
+        .card-blue h3 { color: #1c4a8a; }
+        .card-blue button { background-color: #1c4a8a; }
+        .card-blue button:hover { background-color: #143666; }
+
+        .card-green { background-color: #e8f3e9; }
+        .card-green h3 { color: #3b8456; }
+        .card-green button { background-color: #3b8456; }
+        .card-green button:hover { background-color: #2b6240; }
+
+        .card-orange { background-color: #fcf4e8; }
+        .card-orange h3 { color: #b87a2d; }
+        .card-orange button { background-color: #c48c40; }
+        .card-orange button:hover { background-color: #a1702f; }
+
+        /*cards aluno */
+         /* --- CARDS DOS CURSOS --- */
+        .cards-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .card { border-radius: 15px; padding: 30px; display: flex; flex-direction: column; align-items: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #f0f0f0; transition: transform 0.2s; }
+        .card:hover { transform: translateY(-5px); }
+        .card-icon { font-size: 50px; margin-bottom: 20px; }
+        .card h3 { font-size: 20px; margin-bottom: 10px; text-align: center; }
+        .card p { font-size: 14px; color: #666; text-align: center; margin-bottom: 25px; flex-grow: 1; }
+        .card button { width: 100%; padding: 12px; border: none; border-radius: 8px; color: white; font-weight: 600; font-size: 14px; cursor: pointer; transition: 0.2s; display: flex; justify-content: center; align-items: center; gap: 8px; }
+
+        /* Cores Específicas de cada Card (Focadas no Aluno) */
+        .card-curso { background-color: #f0f4fb; }
+        .card-curso .card-icon { color: #1c4a8a; }
+        .card-curso h3 { color: #1c4a8a; }
+        .card-curso button { background-color: #1c4a8a; }
+        .card-curso button:hover { background-color: #143666; }
+
+ /* --- ESTILOS DO FORMULÁRIO DE UPLOAD --- */
+        .form-container {
+            max-width: 800px;
+            margin: 0; /* Tiramos o 'auto' daqui. Isso faz o bloco colar na esquerda! */
+        }
+
+        .form-title {
+            font-size: 24px;
+            color: #1c4a8a;
+            margin-bottom: 25px;
+            font-weight: 600;
+            text-align: left; /* Garante que o texto do título também fique à esquerda */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="url"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.2s;
+            color: #555;
+        }
+
+        .form-group input:focus {
+            border-color: #4a81b7;
+        }
+
+        /* Área de Drag and Drop */
+        .upload-box {
+            border: 2px dashed #cbd5e1;
+            background-color: #f8fafc;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            margin-bottom: 10px;
+            transition: background-color 0.2s;
+        }
+
+        .upload-box:hover {
+            background-color: #f1f5f9;
+        }
+
+        .upload-icon {
+            font-size: 40px;
+            color: #4a81b7;
+            margin-bottom: 15px;
+        }
+
+        .upload-text {
+            color: #64748b;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+        .btn-selecionar {
+            background-color: #4a81b7;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-selecionar:hover {
+            background-color: #366491;
+        }
+
+        .file-formats {
+            display: block;
+            margin-top: 10px;
+            font-size: 13px;
+            color: #94a3b8;
+        }
+
+        /* Lista de Arquivos (O PDF embaix0) */
+        .file-list {
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 12px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            background-color: #fff;
+        }
+
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .icon-pdf {
+            color: #e74c3c;
+            font-size: 18px;
+        }
+
+        .icon-trash {
+            color: #94a3b8;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .icon-trash:hover {
+            color: #e74c3c;
+        }
+
+        /* Botão Enviar */
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .btn-enviar {
+            background-color: #4a81b7;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-enviar:hover {
+            background-color: #366491;
+        }
+
+        /* --- MODAL (POP-UP) --- */
+        .modal-overlay {
+            display: none; /* Escondido por padrão */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* Fica por cima de tudo */
+        }
+
+        .modal-box {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            width: 350px;
+        }
+
+        .modal-box h3 {
+            color: #1c4a8a;
+            margin-bottom: 10px;
+        }
+
+        .modal-box p {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .btn-cancelar, .btn-confirmar {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.2s;
+        }
+
+        .btn-cancelar {
+            background-color: #f1f5f9;
+            color: #333;
+        }
+
+            /* Botão pequeno para voltar */
+        .btn-voltar {
+            background-color: #f1f5f9; /* Fundo cinza bem clarinho e discreto */
+            color: #475569; /* Letra cinza escuro */
+            text-decoration: none;
+            padding: 8px 16px; /* Tamanho delicado (8px altura, 16px largura) */
+            font-size: 14px; /* Fonte menorzinha */
+            border-radius: 6px; /* Bordinha levemente arredondada */
+            font-weight: 500;
+            transition: all 0.3s ease; /* Efeito suave ao passar o mouse */
+        }
+
+        /* Efeito quando passa o mouse por cima */
+        .btn-voltar:hover {
+            background-color: #e2e8f0;
+            color: #1c4a8a; /* Muda o texto pro azul do sistema */
+        }
+        .btn-cancelar:hover {
+            background-color: #e2e8f0;
+        }
+
+        .btn-confirmar {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .btn-confirmar:hover {
+            background-color: #c0392b;
+        }
+
+        .header-acoes {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #f0f4fb;
+            padding-bottom: 15px;
+        }
+
+        .tabela-admin {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .tabela-admin th, .tabela-admin td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .tabela-admin th {
+            background-color: #f8fafc;
+            color: #1c4a8a;
+            font-weight: 600;
+        }
+
+        .btn-editar {
+            background-color: #e2e8f0;
+            color: #475569;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ccc; /* Ajuste para a cor da borda que você já usa */
+            border-radius: 6px;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            resize: vertical; /* Permite esticar só para baixo, sem quebrar o layout */
+            min-height: 120px; /* Já começa com um tamanho excelente! */
+            background-color: #f9fafb;
+        }
+
+        .form-group textarea:focus {
+            border-color: #1c4a8a; /* Fica azulzinho ao clicar */
+            background-color: #ffffff;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(28, 74, 138, 0.1); /* Efeito de foco */
+        }
+
+        /* Container responsivo e MENOR para o YouTube */
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px; /* AQUI ESTÁ O SEGREDO: O vídeo não vai passar desse tamanho! */
+            aspect-ratio: 16 / 9; /* Mantém a proporção exata do YouTube automaticamente */
+            border-radius: 8px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
